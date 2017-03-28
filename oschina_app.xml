@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SessionID -->
+<process name="Demo" terminal="Android" package ="com.example.myctrip" xmlns="http://jbpm.org/4.4/jpdl" >
+	<task name="login" class="com.example.activity.LoginActivity">
+		<cache_data>
+			<data name="username" id="et_username" type="R" value = "变量标识名"/>
+			<data name="password" id ="et_password" type="" value= "变量标识名"/>
+		</cache_data>
+	</task>
+	
+	<task name="query" class="com.example.activity.SearchTicketActivity">
+		<cache_data>
+			<data name="from" id="et_original_address" type="" value = "变量标识名"/>
+			<data name="to" id="et_destination_address" type="" value= "变量标识名"/>
+			<data name="departureTime" id="et_start_day" type="" value= "变量标识名"/>
+		</cache_data>
+	</task>
+	
+	<task name="order" class="come.example.activity.AddPassengerInfoActivity">
+		<cache_data>
+			<data name="bookname" id="et_book_name"/>
+			<data name="booktype" id="spinner_certificates_type"/>
+			<data name="booknumber" id="et_certificate_number"/>
+			<data name="takename" id="et_token_name"/>
+			<data name="takenumber" id="et_phonenumber"/>
+		</cache_data>
+	</task>
+
+	<task name="pay" class="com.example.activity.PayForTicketActivity">
+		<cache_data>
+			<data name="paynumber" id="et_pay_name"/>
+			<data name="paypassword" id="et_pay_password"/>
+		</cache_data>
+	</task>
+	
+</process>

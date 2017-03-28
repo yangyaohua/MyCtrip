@@ -1,0 +1,83 @@
+<com.example.view.SlidingMenu xmlns:yyh="http://schemas.android.com/apk/res/com.example.myctrip"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    yyh:rightPadding="100dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/menu_sliding" />
+       
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/azure"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/fl_content"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" >
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:id="@+id/v_main"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="#f00"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/v_mine"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:visibility="invisible"
+                    android:layout_weight="1"
+                    android:background="#f00"/>
+    
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_main"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="主页"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_mine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="我的"
+                    android:textSize="20dp" />
+
+              
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.example.view.SlidingMenu>

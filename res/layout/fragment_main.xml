@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView_stu_main_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="欢迎使用本系统"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff00ff"
+        android:textSize="30sp" />
+
+    <View android:layout_width="match_parent"
+        android:background="@drawable/ic_launcher"
+        android:layout_marginTop="10dip"
+        android:layout_height="1dip"/>
+    
+    <GridView
+        android:id="@+id/gv_main"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="2"
+        android:layout_marginTop="5dip"/>
+    
+</LinearLayout>

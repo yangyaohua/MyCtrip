@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/xUtils-2.6.14.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
