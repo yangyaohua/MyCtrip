@@ -3,11 +3,7 @@ package com.example.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.List;
-
-import com.example.bean.Task;
 
 public class Convert2Json 
 {
@@ -77,17 +73,4 @@ public class Convert2Json
         return json;
     }
    
-    
-    
-    public static String listTask2Json(List<Task> list){
-    	String json = "{\n";
-    	for(int i = 0; i < list.size(); i++){
-    		json += "\t\"" + i + "\":" + obj2Json(list.get(i));
-    		if (i != list.size() - 1) {
-				json += ",\n";
-			}
-    	}
-    	json += "\n}";
-    	return json;
-    }
 }

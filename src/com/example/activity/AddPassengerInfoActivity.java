@@ -12,8 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.data.Pair;
-import com.example.data.ViewContainer;
 import com.example.myctrip.R;
 import com.example.utils.ActivityCollector;
 import com.example.utils.Constants;
@@ -128,28 +126,6 @@ public class AddPassengerInfoActivity extends BaseActivity {
 		et_phonenumber = (EditText) findViewById(R.id.et_phonenumber);
 		btn_book = (Button) findViewById(R.id.btn_pay);
 		tv_price = (TextView) findViewById(R.id.tv_price);
-		
-		Intent intent = getIntent();
-		if (intent != null) {
-			et_book_name.setText(intent.getStringExtra("et_book_name"));
-			et_certificate_number.setText(intent.getStringExtra("et_certificate_number"));
-			et_token_name.setText(intent.getStringExtra("et_token_name"));
-			et_phonenumber.setText(intent.getStringExtra("et_phonenumber"));
-			String type = intent.getStringExtra("spinner_certificates_type");
-			if (type != null && type.length() == 1) {
-				spinner_certificates_type.setSelection(Integer.valueOf(type));
-			}
-		}
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	protected void addUserDataView(ViewContainer container) {
-		container.addView("2", new Pair<String, View>("et_book_name",et_book_name),
-				new Pair<String, View>("spinner_certificates_type", spinner_certificates_type),
-				new Pair<String, View>("et_certificate_number", et_certificate_number),
-				new Pair<String, View>("et_token_name", et_token_name),
-				new Pair<String, View>("et_phonenumber", et_phonenumber)
-			);
-	}
 }

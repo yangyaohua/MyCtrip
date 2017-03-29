@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.example.adapter.SearchTicketsAdapter;
 import com.example.bean.Ticket;
-import com.example.data.ViewContainer;
 import com.example.myctrip.R;
 import com.example.utils.ActivityCollector;
 import com.example.utils.Constants;
@@ -23,7 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class SearchResultActivity extends BaseActivity {
+public class SearchResultActivity extends Activity {
 
 	private ListView lv_tickets;
 	private List<Ticket> ticketList;
@@ -81,8 +80,6 @@ public class SearchResultActivity extends BaseActivity {
 			};
 		}.start();
 	}
-	
-	
 
 	private void initEvent() {
 		lv_tickets.setOnItemClickListener(new OnItemClickListener() {
@@ -112,8 +109,4 @@ public class SearchResultActivity extends BaseActivity {
 		ticketList = new ArrayList<Ticket>();
 	}
 
-	@Override
-	protected void addUserDataView(ViewContainer instance) {
-		
-	}
 }

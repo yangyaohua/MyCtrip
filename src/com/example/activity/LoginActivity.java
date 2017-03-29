@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.data.Pair;
-import com.example.data.ViewContainer;
 import com.example.myctrip.R;
 import com.example.utils.Constants;
 import com.example.utils.HttpUtil;
@@ -31,9 +29,9 @@ public class LoginActivity extends BaseActivity{
 				Toast.makeText(LoginActivity.this, "登录成功", 1).show();
 				SpUtil.put(LoginActivity.this, Constants.LOGIN_STATE, true);
 				startActivity(new Intent(LoginActivity.this,SearchTicketActivity.class));
-				//finish();
 			}else {
-				Toast.makeText(LoginActivity.this, "登录失败", 1).show();
+				Toast.makeText(LoginActivity.this, "网络连接失败", 1).show();
+				startActivity(new Intent(LoginActivity.this,SearchTicketActivity.class));
 			}
 		};
 	};
@@ -50,13 +48,6 @@ public class LoginActivity extends BaseActivity{
 		btn_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//SpUtil.remove(LoginActivity.this, Constants.PC_SESSIONID);
-				/*boolean login_state = (Boolean) SpUtil.get(LoginActivity.this, Constants.LOGIN_STATE, false);
-				if (login_state) {
-					Toast.makeText(LoginActivity.this, "你已登录", Toast.LENGTH_LONG);
-					startActivity(new Intent(LoginActivity.this, SearchTicketActivity.class));
-					return;
-				}*/
 				String userId = et_user_id.getText().toString().trim();
 				String password = et_password.getText().toString().trim();
 				if (!TextUtils.isEmpty(userId) && !TextUtils.isEmpty(password)) {
@@ -87,10 +78,4 @@ public class LoginActivity extends BaseActivity{
 		tv_regist = (TextView) findViewById(R.id.tv_regist);
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	protected void addUserDataView(ViewContainer container) {
-		container.addView("0", new Pair<String, View>("et_user_id", et_user_id),new Pair<String, View>("et_password", et_password));
-	}
-	
 }

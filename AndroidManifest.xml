@@ -26,15 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.activity.LoginActivity"></activity>
-		<activity android:name="com.example.activity.SearchTicketActivity"></activity>
+        <activity android:name="com.example.activity.LoginActivity"
+            android:exported="true"></activity>
+		<activity android:name="com.example.activity.SearchTicketActivity"
+		    android:process="com.example.mydatadriver"
+		    android:exported="true"></activity>
         <activity android:name="com.example.activity.BaseActivity"></activity>
         <activity android:name="com.example.activity.SearchResultActivity"></activity>
-        <activity android:name="com.example.activity.ChangePasswdActivity"></activity>
-        <activity android:name="com.example.activity.AboutActivity"></activity>
-        <activity android:name="com.example.activity.MainActivity"></activity>
-        <activity android:name="com.example.activity.AddPassengerInfoActivity"></activity>
-        <activity android:name="com.example.activity.PayForTicketActivity"></activity>
+        <activity android:name="com.example.activity.AddPassengerInfoActivity"
+            android:exported="true"></activity>
+        <activity android:name="com.example.activity.PayForTicketActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

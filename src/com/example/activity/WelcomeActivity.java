@@ -1,27 +1,17 @@
 package com.example.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.bean.Task;
-import com.example.data.MyProvider;
 import com.example.myctrip.R;
 import com.example.utils.Constants;
 import com.example.utils.HttpUtil;
@@ -49,7 +39,6 @@ public class WelcomeActivity extends Activity {
 				handleSessionId(msg);
 				break;
 			case MESSAGE_SESSION_PIECE:
-				handleSessionPiece(msg);
 				break;
 			default:
 				break;
@@ -70,81 +59,6 @@ public class WelcomeActivity extends Activity {
 		initEvent();
 	}
 
-
-
-	private void handleSessionPiece(Message msg) {
-		String piece = (String) msg.obj;
-		if (piece != null && !piece.equals("")) {
-			List<Task> taskList = queryDownProvider();
-			int index = Integer.valueOf(piece);
-			switch (index) {
-			case 0:
-				Intent intent = new Intent(WelcomeActivity.this,
-						SearchTicketActivity.class);
-				if (taskList != null && !taskList.isEmpty())
-					for (Task task : taskList) {
-						if (task.getIndex().equals("1")) {
-							intent.putExtra(task.getKey(),
-									task.getValue());
-						}
-					}
-				startActivity(intent);
-				break;
-			case 1:
-
-				Intent intent2 = new Intent(WelcomeActivity.this,
-						AddPassengerInfoActivity.class);
-				if (taskList != null && !taskList.isEmpty())
-
-					for (Task task : taskList) {
-						if (task.getIndex().equals("2")) {
-							intent2.putExtra(task.getKey(),
-									task.getValue());
-						}
-					}
-				startActivity(intent2);
-				break;
-			case 2:
-				Intent intent3 = new Intent(WelcomeActivity.this,
-						PayForTicketActivity.class);
-				if (taskList != null && !taskList.isEmpty())
-
-					for (Task task : taskList) {
-						if (task.getIndex().equals("3")) {
-							intent3.putExtra(task.getKey(),
-									task.getValue());
-						}
-					}
-				startActivity(intent3);
-				break;
-			case 3:
-				Intent intent4 = new Intent(WelcomeActivity.this,
-						LoginActivity.class);
-				if (taskList != null && !taskList.isEmpty())
-					for (Task task : taskList) {
-						if (task.getIndex().equals("4")) {
-							intent4.putExtra(task.getKey(),
-									task.getValue());
-						}
-					}
-				startActivity(intent4);
-				break;
-			default:
-				if (type == VISITOR_TYPE.ANDROID) {
-					startActivity(new Intent(WelcomeActivity.this,
-							LoginActivity.class));
-				} else {
-					Toast.makeText(WelcomeActivity.this,
-							"PC端会话过期了，需要重要登录访问", Toast.LENGTH_LONG)
-							.show();
-				}
-				break;
-			}
-		} else {
-			Toast.makeText(WelcomeActivity.this, "连接服务器出错",
-					Toast.LENGTH_LONG).show();
-		}		
-	}
 
 	private void handleSessionId(Message msg) {
 		String result = (String) msg.obj;
@@ -187,9 +101,6 @@ public class WelcomeActivity extends Activity {
 							Constants.PC_SESSIONID, JSESSIONID);
 					Toast.makeText(WelcomeActivity.this, pcId,
 							Toast.LENGTH_LONG).show();
-					downloadPiece();
-					// startActivity(new Intent(WelcomeActivity.this,
-					// MainActivity.class));
 				}
 			}
 		} else {
@@ -199,20 +110,6 @@ public class WelcomeActivity extends Activity {
 		}		
 	}
 
-	private List<Task> queryDownProvider() {
-		List<Task> tasks = new ArrayList<>();
-		ContentResolver contentResolver = getContentResolver();
-		Cursor query = contentResolver.query(MyProvider.DOWN_URI, null,
-				MyProvider.COLUMN_PACKAGE + " = ? ",
-				new String[] { getPackageName() }, null);
-		while (query.moveToNext()) {
-			Task task = new Task(query.getString(1), query.getString(2),
-					query.getString(3));
-			tasks.add(task);
-			Log.e("", task.toString());
-		}
-		return tasks;
-	}
 
 	public static VISITOR_TYPE getType() {
 		return type;
@@ -222,20 +119,9 @@ public class WelcomeActivity extends Activity {
 		btn_android.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				type = VISITOR_TYPE.ANDROID;
-				downloadSessionId();
-				// startActivity(new Intent(WelcomeActivity.this,
-				// LoginActivity.class));
+				type = VISITOR_TYPE.ANDROID;			
 			}
 		});
-
-		/*btn_pc.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				type = VISITOR_TYPE.PC;
-				downloadSessionId();
-			}
-		});*/
 		
 		downloadSessionId();
 	}

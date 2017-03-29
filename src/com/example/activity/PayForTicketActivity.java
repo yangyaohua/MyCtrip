@@ -1,15 +1,5 @@
 package com.example.activity;
 
-import com.example.bean.Ticket;
-import com.example.data.Pair;
-import com.example.data.ViewContainer;
-import com.example.myctrip.R;
-import com.example.utils.ActivityCollector;
-import com.example.utils.Constants;
-import com.example.utils.HttpUtil;
-
-import android.R.bool;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.myctrip.R;
+import com.example.utils.ActivityCollector;
+import com.example.utils.HttpUtil;
 
 public class PayForTicketActivity extends BaseActivity {
 	
@@ -36,7 +30,7 @@ public class PayForTicketActivity extends BaseActivity {
 					Toast.makeText(PayForTicketActivity.this, "支付成功", Toast.LENGTH_LONG).show();;
 					ActivityCollector.finishAll();
 				}else {
-					Toast.makeText(PayForTicketActivity.this, "支付失败", Toast.LENGTH_LONG).show();
+					Toast.makeText(PayForTicketActivity.this, "网络错误，支付失败", Toast.LENGTH_LONG).show();
 				}
 				break;
 
@@ -93,18 +87,8 @@ public class PayForTicketActivity extends BaseActivity {
 		et_pay_name = (EditText) findViewById(R.id.et_pay_name);
 		et_pay_password = (EditText) findViewById(R.id.et_pay_password);
 		btn_pay = (Button) findViewById(R.id.btn_pay);
-		
-		Intent intent = getIntent();
-		if (intent != null) {
-			et_pay_name.setText(intent.getStringExtra("et_pay_name"));
-			et_pay_password.setText(intent.getStringExtra("et_pay_password"));
-		}
 	}
 
 
-	@Override
-	protected void addUserDataView(ViewContainer container) {
-		container.addView("3", new Pair<String, View>("et_pay_name",et_pay_name),new Pair<String, View>("et_pay_password", et_pay_password));
-	}
 
 }

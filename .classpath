@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/gson-2.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/junit-4.10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/毕业设计/Hook代码/MyCtrip/MyCtrip/libs/xUtils-2.6.14.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
