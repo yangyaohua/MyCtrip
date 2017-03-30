@@ -30,8 +30,8 @@ public class LoginActivity extends BaseActivity{
 				SpUtil.put(LoginActivity.this, Constants.LOGIN_STATE, true);
 				startActivity(new Intent(LoginActivity.this,SearchTicketActivity.class));
 			}else {
-				Toast.makeText(LoginActivity.this, "网络连接失败", 1).show();
-				startActivity(new Intent(LoginActivity.this,SearchTicketActivity.class));
+				Toast.makeText(LoginActivity.this, "网络连接失败,登录失败", 1).show();
+				//startActivity(new Intent(LoginActivity.this,SearchTicketActivity.class));
 			}
 		};
 	};

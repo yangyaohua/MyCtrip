@@ -16,7 +16,7 @@
 		</cache_data>
 	</task>
 	
-	<task name="order" class="come.example.activity.AddPassengerInfoActivity">
+	<task name="order" class="com.example.activity.AddPassengerInfoActivity">
 		<cache_data>
 			<data name="bookname" id="et_book_name"/>
 			<data name="booktype" id="spinner_certificates_type"/>

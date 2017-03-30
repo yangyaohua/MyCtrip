@@ -1,7 +1,6 @@
 package com.example.utils;
 
 import java.io.BufferedReader;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,14 +9,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import android.content.Context;
 import android.util.Log;
@@ -32,8 +29,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class HttpUtil {
 
-	public static String URL = "http://172.23.176.52:8080/MyCtrip/";
-	private static final String TAG = "uploadFile";
+	public static String URL = "http://172.23.67.252:8080/MyCtrip/";
 	private static final int TIME_OUT = 10 * 1000; // 超时时间
 	private static final String CHARSET = "utf-8";
 
@@ -301,12 +297,6 @@ public class HttpUtil {
 		public int numbers;
 	}
 
-	/*
-	 * public static void saveData(Context context, String data) { Map<String,
-	 * String> map = new HashMap<String, String>(); map.put("data", data);
-	 * testUrlConnection(context, "UploadDataServlet", map); }
-	 */
-
 	public static void uploadData(Context context, String filePath) {
 		File file = new File(FileHelper.DOWNLOAD_PATH + filePath);
 		try {
@@ -337,43 +327,6 @@ public class HttpUtil {
 			e.printStackTrace();
 		}
 
-		/*
-		 * String BOUNDARY = UUID.randomUUID().toString(); String PREFIX =
-		 * "--",LINE_END = "\r\n"; String CONTENT_TYPE = "multipart/form-data";
-		 * String result = null;
-		 * 
-		 * try { HttpURLConnection connection = (HttpURLConnection)
-		 * url.openConnection(); connection.setReadTimeout(TIME_OUT);
-		 * connection.setConnectTimeout(TIME_OUT); connection.setDoInput(true);
-		 * connection.setDoOutput(true); connection.setUseCaches(false);
-		 * connection.setRequestMethod("POST");
-		 * connection.setRequestProperty("Charset", CHARSET);
-		 * connection.setRequestProperty("connection", "keep-alive");
-		 * connection.setRequestProperty("Content-Type", CONTENT_TYPE +
-		 * ",boundary=" + BOUNDARY); if (file != null) { DataOutputStream dos =
-		 * new DataOutputStream(connection.getOutputStream()); StringBuffer sb =
-		 * new StringBuffer(); sb.append(PREFIX); sb.append(BOUNDARY);
-		 * sb.append(LINE_END);
-		 *//**
-		 * 这里重点注意： name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
-		 * filename是文件的名字，包含后缀名的 比如:abc.png
-		 */
-		/*
-		 * sb.append("Content-Disposition: form-data; name=\"img\"; filename=\""+
-		 * file.getName()+"\""+LINE_END); sb.append(LINE_END);
-		 * dos.write(sb.toString().getBytes()); InputStream is = new
-		 * FileInputStream(file); byte[] bytes = new byte[1024]; int len = 0;
-		 * while((len = is.read(bytes)) != -1){ dos.write(bytes,0,len); }
-		 * is.close(); dos.write(LINE_END.getBytes()); byte[] end_data = (PREFIX
-		 * + BOUNDARY + PREFIX + LINE_END).getBytes(); dos.write(end_data);
-		 * dos.flush();
-		 * 
-		 * int res = connection.getResponseCode(); if (res == 200) { InputStream
-		 * input = connection.getInputStream(); StringBuffer sb1 = new
-		 * StringBuffer(); int ss; while((ss = input.read()) != -1){
-		 * sb1.append((char)ss); } result = sb1.toString(); } } } catch
-		 * (Exception e) { e.printStackTrace(); }
-		 */
 	}
 
 }

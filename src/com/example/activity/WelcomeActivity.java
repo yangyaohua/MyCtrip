@@ -81,7 +81,8 @@ public class WelcomeActivity extends Activity {
 								Constants.ANDROID_SESSIONID, JSESSIONID);
 						Toast.makeText(WelcomeActivity.this, androidId,
 								Toast.LENGTH_LONG).show();
-						downloadPiece();
+						startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+						//downloadPiece();
 					}
 				}
 			} else if (type == VISITOR_TYPE.PC) {
