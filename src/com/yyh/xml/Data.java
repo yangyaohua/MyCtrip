@@ -1,4 +1,4 @@
-package com.example.xml;
+package com.yyh.xml;
 
 public class Data{
 	private String dataName;

@@ -1,28 +1,13 @@
-package com.example.ams;
+package com.yyh.hook;
 
-import java.io.File;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.example.provider.ActivityDataCapturer;
-import com.example.provider.ActivityDataInjector;
-import com.example.provider.ProviderHelper;
-import com.example.xml.Data;
-import com.example.xml.Process;
-import com.example.xml.Task;
-import com.example.xml.XmlParser;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.Spinner;
+
+import com.yyh.utils.ActivityDataCapturer;
+import com.yyh.utils.ActivityDataInjector;
+import com.yyh.xml.XParser;
 
 public class HookInstrumentation extends Instrumentation {
 
@@ -60,15 +45,16 @@ public class HookInstrumentation extends Instrumentation {
 	public void callActivityOnResume(Activity activity) {
 		if (methodResume != null) {
 			try {
-				if (isXMLExist())
-					ActivityDataInjector.getInstance().restoreDatasByXML(activity);
+				if (XParser.isXmlIdExist("oschina_app", "method")) {
+					ActivityDataInjector.getInstance().injectDatasXMLComplete(activity);
+				}else if (XParser.isXmlIdExist("oschina_app"))
+					ActivityDataInjector.getInstance().injectDatasByXML(activity);
 				else
-					ActivityDataInjector.getInstance().restoreDatasAuto(activity);
+					ActivityDataInjector.getInstance().injectDatasAuto(activity);
 				methodResume.invoke(mOldInstrumentation, activity);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			Log.e(TAG, "OnResume Intercept here");
 		}
 
 		super.callActivityOnResume(activity);
@@ -78,7 +64,9 @@ public class HookInstrumentation extends Instrumentation {
 	public void callActivityOnPause(Activity activity) {
 		if (methodPause != null) {
 			try {
-				if (isXMLExist())
+				if (XParser.isXmlIdExist("oschina_app", "method")) {
+					ActivityDataCapturer.getInstance().saveDatasXMLComplete(activity);
+				}else if (XParser.isXmlIdExist("oschina_app"))
 					ActivityDataCapturer.getInstance().saveDatasByXML(activity);
 				else
 					ActivityDataCapturer.getInstance().saveDatasAuto(activity);
@@ -86,20 +74,8 @@ public class HookInstrumentation extends Instrumentation {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			Log.e(TAG, "onPause Intercept here");
 		}
 		super.callActivityOnPause(activity);
 	}
-
-	/**
-	 * 判断xml文件是否存在
-	 * 
-	 * @return
-	 */
-	private boolean isXMLExist() {
-		File file = new File(XmlParser.XML_DATA_PATH);
-		return file.exists();
-	}
-
 
 }

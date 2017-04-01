@@ -3,7 +3,7 @@
 <process name="Demo" terminal="Android" package ="com.example.myctrip" xmlns="http://jbpm.org/4.4/jpdl" >
 	<task name="login" class="com.example.activity.LoginActivity">
 		<cache_data>
-			<data name="username" id="et_username" type="android.widget.EditText"/>
+			<data name="username" id="et_user_id" type="android.widget.EditText"/>
 			<data name="password" id ="et_password" type="android.widget.EditText"/>
 		</cache_data>
 	</task>

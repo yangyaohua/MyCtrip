@@ -1,4 +1,4 @@
-package com.example.provider;
+package com.yyh.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.ams.Constants;
+import com.yyh.hook.ProviderConstants;
 
 /**
  * 用单例，对本地数据库(contentProvider)进行操作。
@@ -39,15 +39,15 @@ public class ProviderHelper {
 		ContentResolver contentResolver = activity.getContentResolver();
 		ContentValues values = new ContentValues();
 		if (map != null && !map.isEmpty()) {
-			contentResolver.delete(Constants.URI_SAVE, Constants.COLUMN_PACKAGE
+			contentResolver.delete(ProviderConstants.URI_SAVE, ProviderConstants.COLUMN_PACKAGE
 					+ " = ? ", new String[] { packageName });
 			for (String key : map.keySet()) {
 				String value = map.get(key);
-				values.put(Constants.COLUMN_PACKAGE, packageName);
-				values.put(Constants.COLUMN_ID, activityName);
-				values.put(Constants.COLUMN_KEY, key);
-				values.put(Constants.COLUMN_VALUE, value);
-				contentResolver.insert(Constants.URI_SAVE, values);
+				values.put(ProviderConstants.COLUMN_PACKAGE, packageName);
+				values.put(ProviderConstants.COLUMN_ID, activityName);
+				values.put(ProviderConstants.COLUMN_KEY, key);
+				values.put(ProviderConstants.COLUMN_VALUE, value);
+				contentResolver.insert(ProviderConstants.URI_SAVE, values);
 			}
 		}
 	}
@@ -64,23 +64,28 @@ public class ProviderHelper {
 		String packageName = activity.getPackageName();
 		String activityName = activity.getComponentName().getClassName();
 
-		Cursor query = contentResolver.query(Constants.URI_RESTORE, null,
-				Constants.COLUMN_PACKAGE + " = ? and " + Constants.COLUMN_ID
+		Cursor query = contentResolver.query(ProviderConstants.URI_RESTORE, null,
+				ProviderConstants.COLUMN_PACKAGE + " = ? and " + ProviderConstants.COLUMN_ID
 						+ " = ?", new String[] { packageName, activityName },
 				null);
 		while (query.moveToNext()) {
 			String key = query.getString(query
-					.getColumnIndex(Constants.COLUMN_KEY));
+					.getColumnIndex(ProviderConstants.COLUMN_KEY));
 			String value = query.getString(query
-					.getColumnIndex(Constants.COLUMN_VALUE));
+					.getColumnIndex(ProviderConstants.COLUMN_VALUE));
 			map.put(key, value);
 		}
 		return map;
 	}
 	
+	/**
+	 * 删除myDriver中，MyProvider中对应的activity数据。
+	 * @param activity
+	 * @return
+	 */
 	public int deleteDatas(Activity activity){
-		int delete = activity.getContentResolver().delete(Constants.URI_RESTORE,
-				Constants.COLUMN_PACKAGE + " = ? ",
+		int delete = activity.getContentResolver().delete(ProviderConstants.URI_RESTORE,
+				ProviderConstants.COLUMN_PACKAGE + " = ? ",
 				new String[] { activity.getPackageName() });
 		return delete;
 	}

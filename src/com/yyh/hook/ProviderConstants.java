@@ -1,8 +1,8 @@
-package com.example.ams;
+package com.yyh.hook;
 
 import android.net.Uri;
 
-public class Constants {
+public class ProviderConstants {
 	public static final String AUTHORITY_SAVE = "com.example.mydatadriver.MyProvider";
 	public static final Uri URI_SAVE = Uri.parse("content://" + AUTHORITY_SAVE);
 	

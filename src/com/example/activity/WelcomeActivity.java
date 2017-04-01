@@ -16,6 +16,7 @@ import com.example.myctrip.R;
 import com.example.utils.Constants;
 import com.example.utils.HttpUtil;
 import com.example.utils.SpUtil;
+import com.yyh.xml.XParser;
 
 public class WelcomeActivity extends Activity {
 
