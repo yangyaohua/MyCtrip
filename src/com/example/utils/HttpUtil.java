@@ -1,9 +1,6 @@
 package com.example.utils;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -17,12 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.activity.WelcomeActivity;
 import com.example.activity.WelcomeActivity.VISITOR_TYPE;
 import com.example.bean.Ticket;
-import com.example.data.FileHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
