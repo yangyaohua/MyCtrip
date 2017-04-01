@@ -29,7 +29,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class HttpUtil {
 
-	public static String URL = "http://172.23.67.252:8080/MyCtrip/";
+	public static String URL = "http://172.23.152.180:8080/MyCtrip/";
 	private static final int TIME_OUT = 10 * 1000; // 超时时间
 	private static final String CHARSET = "utf-8";
 
@@ -297,7 +297,7 @@ public class HttpUtil {
 		public int numbers;
 	}
 
-	public static void uploadData(Context context, String filePath) {
+/*	public static void uploadData(Context context, String filePath) {
 		File file = new File(FileHelper.DOWNLOAD_PATH + filePath);
 		try {
 			URL url = getUrl("UploadDataServlet", null);
@@ -327,6 +327,6 @@ public class HttpUtil {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 }

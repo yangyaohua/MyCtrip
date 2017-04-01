@@ -3,7 +3,6 @@ package com.example.ams;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import android.R.attr;
 import android.app.Instrumentation;
 import android.util.Log;
 

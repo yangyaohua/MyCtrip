@@ -3,33 +3,33 @@
 <process name="Demo" terminal="Android" package ="com.example.myctrip" xmlns="http://jbpm.org/4.4/jpdl" >
 	<task name="login" class="com.example.activity.LoginActivity">
 		<cache_data>
-			<data name="username" id="et_username" type="R" value = "变量标识名"/>
-			<data name="password" id ="et_password" type="" value= "变量标识名"/>
+			<data name="username" id="et_username" type="android.widget.EditText"/>
+			<data name="password" id ="et_password" type="android.widget.EditText"/>
 		</cache_data>
 	</task>
 	
 	<task name="query" class="com.example.activity.SearchTicketActivity">
 		<cache_data>
-			<data name="from" id="et_original_address" type="" value = "变量标识名"/>
-			<data name="to" id="et_destination_address" type="" value= "变量标识名"/>
-			<data name="departureTime" id="et_start_day" type="" value= "变量标识名"/>
+			<data name="from" id="et_original_address" type="android.widget.EditText" />
+			<data name="to" id="et_destination_address" type="android.widget.EditText" />
+			<data name="departureTime" id="et_start_day" type="android.widget.EditText"/>
 		</cache_data>
 	</task>
 	
 	<task name="order" class="com.example.activity.AddPassengerInfoActivity">
 		<cache_data>
-			<data name="bookname" id="et_book_name"/>
-			<data name="booktype" id="spinner_certificates_type"/>
-			<data name="booknumber" id="et_certificate_number"/>
-			<data name="takename" id="et_token_name"/>
-			<data name="takenumber" id="et_phonenumber"/>
+			<data name="bookname" id="et_book_name" type="android.widget.EditText"/>
+			<data name="booktype" id="spinner_certificates_type" type="android.widget.Spinner"/>
+			<data name="booknumber" id="et_certificate_number" type="android.widget.EditText"/>
+			<data name="takename" id="et_token_name" type="android.widget.EditText"/>
+			<data name="takenumber" id="et_phonenumber" type="android.widget.EditText"/>
 		</cache_data>
 	</task>
 
 	<task name="pay" class="com.example.activity.PayForTicketActivity">
 		<cache_data>
-			<data name="paynumber" id="et_pay_name"/>
-			<data name="paypassword" id="et_pay_password"/>
+			<data name="paynumber" id="et_pay_name" type="android.widget.EditText"/>
+			<data name="paypassword" id="et_pay_password" type="android.widget.EditText"/>
 		</cache_data>
 	</task>
 	
